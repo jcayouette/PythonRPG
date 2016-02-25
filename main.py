@@ -1,5 +1,7 @@
 from random import randint
 import time
+import sys
+import random
 
 
 class Color:
@@ -15,6 +17,47 @@ class Color:
     end = '\033[0m'
 
 # print(Color.bold + 'Hello World !' + Color.end) Example for coloring string blocks.
+
+text = '''
+777777777777777777777777777777777777777
+77777777777777777777  77777777777777777
+777777777777777777+..7  777777777777777
+77777777777777777.:,,:: 777777777777777
+77777777777777777:,::,,7777777777777777
+77777777777777777::+?I, 777777777777777
+777777777777777777,+?I? 777777777777777
+777777777777777777~+,+7     77777777777
+7777777777777777,,.~,??=7I+  7777777777
+77777777777777:+,.I,,~=:?I,~ 7777777777
+77777777777777~~I,,,:?7:,7~= 7777777777
+77777777777777:~+::==I+,,:.+77777777777
+7777777777777,,,+I+?I?+:,+::77777777777
+7777777777777::,~+=?~=+:,=~,~7777777777
+777777777777,:,,:+++~+:= ,+?=7777777777
+777777777777~::,,::~:+:77=,?= 777777777
+77777777777.~~?::=~+~=~I7?:=:7777777777
+77777777777,.,,.:,,,,~,,7,,,~7777777777
+77777777777::,+??,,,,.~~,7,,,7777777777
+7777777777 :?..:+,+~,,,,,,,.77777777777
+7777777777 ~,,,:,,,,,,.,,==:77777777777
+77777777777I,.,,:~,:,,,:,~~ 77777777777
+77777777777,=~,,::,?,,,+=:7777777777777
+7777777777,,7=,.::,+:,:~~,7777777777777
+7777777777,,7 ,,~:,,7:::~:=777777777777
+777777777,:777~.~:,:77,,:,,777777777777
+7777777 ,::7777.:,,=777,,::7 7777777777
+77    77,:77777.,,,7777+::~, 7777777777
+77     ,,, 7777,,.,777777.:~:,777777777
+77 =~ ,::777777,,:,7777777,,~.777777777
+77 =I:,,:777777~,,,,777777~,,:,77777777
+77 =I::,?777777+.,:.777777:.,,:77777777
+77 :+:~,777777 ::=~.7777777,,,,77777777
+777,.~,~7777777,,,..7777777,~::77777777
+7777,,,,77777 ,:,,,.7777777,,,, 7777777
+777777~7777=:~~,,7777777777,,=,?7777777
+777777=77777777777777777777==~::7777777
+7777777777777777777777777777.:,77~77777
+'''
 
 switch = ''
 choice1 = ''
@@ -40,21 +83,40 @@ forsaken_abilities = {1: ['Basic: Unseen Hands', 6],
                       3: ['Heavy: Balefire', 8]}
 
 
+def slow_print(s,):
+    for c in s + '\n':
+        sys.stdout.write(c)
+        sys.stdout.flush()  # defeat buffering
+        time.sleep(random.random() * .01)
+
+
 def lore():
     global choice1
+
     print(Color.red + Color.bold + Color.underline + "The Den of the Black Ajah\n" + Color.end)
     time.sleep(1)
     print(Color.darkcyan + 'An RPG adapted from the fantasy book series:\n')
     time.sleep(1)
+
     print(Color.yellow + "The Wheel of Time" + Color.end)
     print(Color.yellow + "by Robert Jordan.\n" + Color.end)
+    slow_print(text)
+#   for c in text:
+#       print(c, end='' + Color.yellow) With help from Kevin for iterating over characters.
+
     time.sleep(1)
     print(Color.blue + "You are a warder bonded to an Aes Sedai." + Color.end)
     print(Color.blue + "Use your abilities in combat and recover the Angreal stolen by Black Ajah.\n" + Color.end)
+
     time.sleep(5)
-    print(Color.bold + Color.blue + "The game ends when you lose all your hp..." + Color.end)
+
+    print(Color.bold + Color.blue + "The game ends when you lose all your hp...\n" + Color.end)
 
     time.sleep(3)  # Puts game to sleep for 5 seconds before printing next line.
+
+    print(Color.green + Color.bold + "Chapter 1")
+
+    time.sleep(1)
 
     print(Color.green + '''\nYou find yourself waking from a troubling dream in the middle of the Tarbon forest.
 The Aes Sedai you are bonded too is missing. You can feel the link to her coming from somewhere in the village ahead.''' + Color.end)
