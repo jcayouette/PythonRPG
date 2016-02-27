@@ -129,7 +129,7 @@ The Aes Sedai you are bonded too is missing. You can feel the link to her coming
 
 def first_choice():
     if choice1 == 'g':
-        print('''You enter the village and see that it is destroyed.
+        print('''You enter the village and see that it is de/home/coyotestroyed.
 You speak with a villager who is holding his crying wife.\n''')
 
         time.sleep(3)
