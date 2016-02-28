@@ -2,6 +2,15 @@ from random import randint
 import time
 import sys
 import random
+import shutil
+import pygame
+from pygame.locals import *
+pygame.init()
+pygame.mixer.music.load("ambient.mp3")
+pygame.mixer.music.play(-1, 0.0)
+
+columns = shutil.get_terminal_size().columns
+#  print("hello world".center(columns))
 
 
 class Color:
@@ -83,24 +92,25 @@ forsaken_abilities = {1: ['Basic: Unseen Hands', 6],
                       3: ['Heavy: Balefire', 8]}
 
 
-def slow_print(s,):
+def slow_print(s, ):
     for c in s + '\n':
         sys.stdout.write(c)
         sys.stdout.flush()  # defeat buffering
+
         time.sleep(random.random() * .01)
 
 
 def lore():
     global choice1
 
-    print(Color.red + Color.bold + Color.underline + "The Den of the Black Ajah\n" + Color.end)
+    print(Color.red + Color.bold + "The Den of the Black Ajah\n".center(columns) + Color.end)
     time.sleep(1)
-    print(Color.darkcyan + 'An RPG adapted from the fantasy book series:\n')
+    print(Color.darkcyan + 'An RPG adapted from the fantasy book series:\n'.center(columns))
     time.sleep(1)
 
-    print(Color.yellow + "The Wheel of Time" + Color.end)
-    print(Color.yellow + "by Robert Jordan.\n" + Color.end)
-    slow_print(text)
+    print(Color.yellow + "The Wheel of Time".center(columns) + Color.end)
+    print(Color.yellow + "by Robert Jordan\n".center(columns) + Color.end)
+    slow_print(text.center(columns))
 #   for c in text:
 #       print(c, end='' + Color.yellow) With help from Kevin for iterating over characters.
 
@@ -108,11 +118,11 @@ def lore():
     print(Color.blue + "You are a warder bonded to an Aes Sedai." + Color.end)
     print(Color.blue + "Use your abilities in combat and recover the Angreal stolen by Black Ajah.\n" + Color.end)
 
-    time.sleep(5)
+    time.sleep(1)
 
     print(Color.bold + Color.blue + "The game ends when you lose all your hp...\n" + Color.end)
 
-    time.sleep(3)  # Puts game to sleep for 5 seconds before printing next line.
+    time.sleep(1)  # Puts game to sleep for 5 seconds before printing next line.
 
     print(Color.green + Color.bold + "Chapter 1")
 
@@ -121,7 +131,7 @@ def lore():
     print(Color.green + '''\nYou find yourself waking from a troubling dream in the middle of the Tarbon forest.
 The Aes Sedai you are bonded too is missing. You can feel the link to her coming from somewhere in the village ahead.''' + Color.end)
 
-    time.sleep(3)
+    time.sleep(1)
 
     print('''Go to the village or stay and hunt for her in the forest? "hunt or Go" (h/g)'''),
     choice1 = input()
@@ -132,7 +142,7 @@ def first_choice():
         print('''You enter the village and see that it is de/home/coyotestroyed.
 You speak with a villager who is holding his crying wife.\n''')
 
-        time.sleep(3)
+        time.sleep(1)
 
         print('''You: "What happened in here!?"
 Man: "A Black Ajah came to steal an Angreal that our ancestors have kept hidden
@@ -141,7 +151,7 @@ our entire village! Please return the artifact to the White Tower for us. It is 
 is an Se'Angreal within the shadowspawn's den from the Age of Legends that could repair our village. Please
 help us!"
 ''')
-        time.sleep(2)
+        time.sleep(1)
 
         print('''Warder: After agreeing to help the villager hands you a map with the location of the den on it.''')
 
@@ -163,7 +173,7 @@ help us!"
 
 
 def bridge():
-    time.sleep(10)
+    time.sleep(3)
     global hero_stats
     global hero_abilities
     global trolloc_stats
@@ -171,15 +181,14 @@ def bridge():
 
     print('''You depart from the village. You see a Trolloc blocking the bridge.
 The Trolloc sees you and utters:
-Orc: "Only the strong ones can pass through this bridge. To prove your strength
-you need to defeat me."
-You and the Trolloc start fighting.
+Trolloc: "Only shadowspawn pass over this bridge. I will cut you to pieces!"\n
+You and the Trolloc enter battle stances.
 ''')
-    time.sleep(3)
-    print('''These are your abilities'''
-          , hero_abilities, '''[attack name, damage/defense].
+    time.sleep(2)
+    print(Color.purple + '''These are your abilities'''
+          , hero_abilities, Color.red + '''[attack name, damage/defense].
 These are your stats''', hero_stats, '''[hp, attack, defense].
-''')
+''' + Color.end)
     print('Opponent stats:', trolloc_stats)
     while hero_stats[0] > 0 or trolloc_stats[0] > 0:
         hero_stats[2] = 2
