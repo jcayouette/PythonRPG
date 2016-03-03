@@ -133,7 +133,7 @@ The Aes Sedai you are bonded too is missing. You can feel the link to her coming
 
     time.sleep(1)
 
-    print('''Go to the village or stay and hunt for her in the forest? "hunt or Go" (h/g)'''),
+    print(Color.red + '''Go to the village or stay and hunt for her in the forest? "hunt or Go" (h/g)''' + Color.end),
     choice1 = input()
 
 
@@ -144,8 +144,8 @@ You speak with a villager who is holding his crying wife.\n''')
 
         time.sleep(1)
 
-        print('''You: "What happened in here!?"
-Man: "A Black Ajah came to steal an Angreal that our ancestors have kept hidden
+        print('''You: "What happened in here!?"''')
+        print(Color.green + '''Man:''' + Color.end + '''' "A Black Ajah came to steal an Angreal that our ancestors have kept hidden
 for the White Tower for over 3,000 years. The Black Ajah took the Angreal and destroyed
 our entire village! Please return the artifact to the White Tower for us. It is said there
 is an Se'Angreal within the shadowspawn's den from the Age of Legends that could repair our village. Please
